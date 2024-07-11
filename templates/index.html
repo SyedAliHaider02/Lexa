@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload PDF or Enter Text</title>
+</head>
+<body>
+    <h1>Upload PDF or Enter Text</h1>
+    <form action="{{ url_for('uploader_file') }}" method="post" enctype="multipart/form-data">
+        <input type="radio" id="pdf" name="input_type" value="pdf" checked>
+        <label for="pdf">Upload PDF</label><br>
+        <input type="file" name="file"><br><br>
+
+        <input type="radio" id="text" name="input_type" value="text">
+        <label for="text">Enter Text</label><br>
+        <textarea name="text_input" rows="10" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

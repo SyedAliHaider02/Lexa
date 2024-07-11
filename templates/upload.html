@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload PDF or Enter Text</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap');
+    </style>
+    <style>
+
+        body {
+            background-color: #0D0017;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23450078' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%230D0017' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%230e0019' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%2310001a' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%2311001b' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2312001d' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%2313001e' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23140020' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23150021' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23150022' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23160024' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23170025' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23180027' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23180028' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23190029' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%2319002b' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%231a002c' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%231a002e' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%231B002F' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+        }
+
+        
+        h1 {
+            font-family: "Teko", sans-serif;
+            font-size: 70px;
+            color: white;
+        }
+
+        h1 > .ai {
+            color: #9811ff;
+            text-shadow: 0px 0px 10px #9811ff77;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0D0017;
+            color:white;
+            font-family: "Raleway", sans-serif;
+            padding: 60px 50px;
+            border-radius: 20px;
+            border: 2px solid #9811ff;
+            box-shadow: 0px 0px 50px #9811ff55;
+        }
+
+        input, textarea {
+            font-family: "Raleway", sans-serif;
+        }
+
+        textarea {
+            background-color: #0D0017;
+            border: 1px solid #ffffff33;
+            border-radius: 5px;
+            color: white;
+            resize: none;
+            padding: 5px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border: 1px solid #ffffff33;
+        }
+
+        input[type="radio"]:checked {
+            accent-color: #9811ff;
+        }
+
+        input[type="submit"], input[type="file"]::-webkit-file-upload-button {
+            margin-top: 5px;
+            background-color: #0D0017;
+            border: 1px solid #ffffff33;
+            border-radius: 5px;
+            box-shadow: 0px 0px 0px transparent;
+            color: white;
+            padding: 7px 12px;
+            transition: 0.1s all;
+
+        }
+
+        input[type="submit"]:hover, input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #9811ff;
+        }
+
+        .center-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>LEXA.<span class="ai">AI</span></h1>
+    <div class="container">
+        <form action="{{ url_for('uploader_file') }}" method="post" enctype="multipart/form-data">
+            <input type="radio" id="pdf" name="input_type" value="pdf" checked>
+            <label for="pdf">Upload PDF</label><br>
+            <input type="file" name="file"><br><br>
+
+            <input type="radio" id="text" name="input_type" value="text">
+            <label for="text">Enter Text</label><br>
+            <textarea name="text_input" rows="10" cols="50"></textarea><br><br>
+
+            <div class="center-button">
+                <input type="submit" value="Submit">
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

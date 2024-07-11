@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topic Modeling Results</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap');
+    </style>
+    <style>
+        body {
+            background-color: #0D0017;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23450078' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%230D0017' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%230e0019' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%2310001a' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%2311001b' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2312001d' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%2313001e' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23140020' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23150021' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23150022' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23160024' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23170025' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23180027' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23180028' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23190029' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%2319002b' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%231a002c' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%231a002e' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%231B002F' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body::-webkit-scrollbar {
+            background: transparent;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3e046a;
+            width: 20%;
+            border-radius: 1000px;
+        }
+
+        h1, h2, h3 {
+            font-family: "Teko", sans-serif;
+            color: white;
+            margin: 5px;
+        }
+
+        p, li {
+            font-family: "Raleway", sans-serif;
+        }
+
+        .container {
+            background-color: #0D0017;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .Topic {
+            background-color: #0D0017;
+            border: 1px solid #9811ff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 50px #9811ff77;
+            color: white;
+            padding: 20px 35px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Results</h1>
+    <h2>Topics:</h2>
+    {% for topic, words in topics.items() %}
+        <div class="Topic">
+            <h3>{{ topic }}:</h3>
+            <p>This topic is characterized by the following key terms with their respective weights:</p>
+            <ul>
+                {% for word, weight in words %}
+                    <li><b>{{ word }}</b> = (Weight: {{ weight }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+    <p style="color:white; font-weight: bold;">The words with higher weights contribute more significantly to this topic.</p>
+</body>
+</html>
